@@ -71,7 +71,6 @@ SpreadSheetCell::SpreadSheetCell(std::string_view initialValue)
 
 SpreadSheetCell::~SpreadSheetCell()
 {
-    std::cout << "Object Destructed\n";
 }
 
 /* This operator can be omitted, since the compiler creates it. */
