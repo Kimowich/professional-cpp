@@ -2,4 +2,6 @@ Code/*
 Exercises/*
 build
 build/*
+.vs/*
+.vscode/*
 *.zip
