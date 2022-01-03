@@ -4,6 +4,8 @@
 #include <stdexcept>
 #include <utility>
 
+
+
 class SpreadSheet
 {
 private:
@@ -28,6 +30,8 @@ public:
     // This function is not allowed to call exceptions
     void swap(SpreadSheet& other) noexcept;
 };
+
+void mySwap(SpreadSheet& first, SpreadSheet& second) noexcept;
 
 SpreadSheet::SpreadSheet(size_t width, size_t height) : width{width},height{height}
 {   
