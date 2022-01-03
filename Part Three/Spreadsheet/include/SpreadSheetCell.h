@@ -27,6 +27,7 @@ public:
     ~SpreadSheetCell();
 
     void set(double value);
+    void set(int value) = delete;
     double getValue() const;
 
     void set(std::string_view value);
