@@ -26,10 +26,10 @@ public:
 
     ~SpreadSheetCell();
 
-    void setValue(double value);
+    void set(double value);
     double getValue() const;
 
-    void setString(std::string_view value);
+    void set(std::string_view value);
     std::string getString() const;
 
     // Create a print function by overloading <<
@@ -44,7 +44,7 @@ SpreadSheetCell::SpreadSheetCell()
 SpreadSheetCell::SpreadSheetCell(double initialValue)
 {
     //std::cout << "Object Constructed\n";
-    setValue(initialValue);
+    set(initialValue);
 }
 
 
@@ -66,7 +66,7 @@ SpreadSheetCell::SpreadSheetCell(std::string_view initialValue):SpreadSheetCell{
 SpreadSheetCell::SpreadSheetCell(std::string_view initialValue)
 {
     //std::cout << "Object Constructed\n";
-    setString(initialValue);
+    set(initialValue);
 }
 
 SpreadSheetCell::~SpreadSheetCell()
@@ -83,7 +83,7 @@ SpreadSheetCell& SpreadSheetCell::operator=(const SpreadSheetCell& rhs)
     }
 }
 
-void SpreadSheetCell::setValue(double value)
+void SpreadSheetCell::set(double value)
 {
     this->value=value;
 }
@@ -93,7 +93,7 @@ double SpreadSheetCell::getValue() const
     return this->value;
 }
 
-void SpreadSheetCell::setString(std::string_view value)
+void SpreadSheetCell::set(std::string_view value)
 {
     this->value = stringToDouble(value);
 }
