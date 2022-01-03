@@ -12,10 +12,14 @@ private:
     size_t height{0};
     // This could be vector instead
     SpreadSheetCell** cells{nullptr};
+    void cleanup() noexcept;
+    void moveFrom(SpreadSheet& src) noexcept;
 public:
     SpreadSheet(size_t width, size_t height);
     SpreadSheet(const SpreadSheet& source);
     SpreadSheet& operator=(const SpreadSheet& rhs);
+    SpreadSheet(SpreadSheet&& src) noexcept; // Move constructor
+    SpreadSheet& operator=(SpreadSheet&& rhs) noexcept; // Move operator
     ~SpreadSheet();
     void setCellAt(size_t x, size_t y, const SpreadSheetCell& cell);
     SpreadSheetCell& getCellAt(size_t x, size_t y);
@@ -58,6 +62,28 @@ SpreadSheet& SpreadSheet::operator=(const SpreadSheet& rhs)
 
     return *this;
 }
+
+/* Move Constructior */
+SpreadSheet::SpreadSheet(SpreadSheet&& src) noexcept
+{
+    moveFrom(src);
+}
+
+/* Move Operator */
+SpreadSheet& SpreadSheet::operator=(SpreadSheet&& rhs) noexcept
+{
+    //Check self-assignment
+    if (this == &rhs)
+    {
+        return *this;
+    }
+
+    // Free the old memory and move ownership
+    cleanup();
+    moveFrom(rhs);
+    return *this;
+}
+
 
 SpreadSheet::~SpreadSheet()
 {
@@ -106,4 +132,28 @@ void SpreadSheet::swap(SpreadSheet& other) noexcept
 void swap(SpreadSheet& first, SpreadSheet& second) noexcept
 {
     first.swap(second);
+}
+
+void SpreadSheet::cleanup() noexcept
+{
+    for (size_t i{ 0 }; i < width; i++)
+    {
+        delete[] cells[i];
+    }
+    delete[] cells;
+    cells = nullptr;
+    this->width = this->height = 0;
+}
+
+void SpreadSheet::moveFrom(SpreadSheet& src) noexcept
+{
+    // shallow copy
+    this->width = src.width;
+    this->height = src.height;
+    this->cells = src.cells;
+
+    // Reset the object source, because ownership has been moved.
+    src.width = 0;
+    src.height = 0;
+    src.cells = nullptr;
 }

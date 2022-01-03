@@ -9,6 +9,6 @@ void printSpreadSheet(SpreadSheet sheet){
 
 int main(int, char**) {
     SpreadSheet s1{4,3};
-    printSpreadSheet(s1);
+
     return EXIT_SUCCESS;
 }
