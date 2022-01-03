@@ -66,7 +66,12 @@ SpreadSheet& SpreadSheet::operator=(const SpreadSheet& rhs)
 /* Move Constructior */
 SpreadSheet::SpreadSheet(SpreadSheet&& src) noexcept
 {
-    moveFrom(src);
+    //moveFrom(src);
+
+    //swap can be used to create a more general move constructor
+    // moveFrom would require constant maintenance.
+    mySwap(*this, src);
+
 }
 
 /* Move Operator */
@@ -78,9 +83,13 @@ SpreadSheet& SpreadSheet::operator=(SpreadSheet&& rhs) noexcept
         return *this;
     }
 
-    // Free the old memory and move ownership
-    cleanup();
-    moveFrom(rhs);
+    //// Free the old memory and move ownership
+    //cleanup();
+    //moveFrom(rhs);
+
+    //swap can be used instead
+    mySwap(*this, rhs);
+
     return *this;
 }
 
@@ -129,7 +138,7 @@ void SpreadSheet::swap(SpreadSheet& other) noexcept
     std::swap(cells, other.cells);
 }
 
-void swap(SpreadSheet& first, SpreadSheet& second) noexcept
+void mySwap(SpreadSheet& first, SpreadSheet& second) noexcept
 {
     first.swap(second);
 }
