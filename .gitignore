@@ -1,7 +1,11 @@
 Code/*
 Exercises/*
-build
-build/*
+*/**/build/*
+*/**/x64/*
+*/**/.vs/*
+*.vcxproj*
+*.sln
+*.exe
 *.json
 *.zip
-/Part Three/Spreadsheet/.vs
+
