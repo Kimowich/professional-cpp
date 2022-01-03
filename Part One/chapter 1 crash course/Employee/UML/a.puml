@@ -1,0 +1,37 @@
+@startuml ClassUml
+namespace Records{
+    class employee {
+        - string firstName
+        - string lastName
+        - int employeeNumber
+        - int salary
+        - bool hired
+        + void promote()
+        + void demote()
+        + void hire()
+        + void fire()
+        + void display()
+        + void setFirstName()
+        + string getFirstName()
+        + void setLastname()
+        + string getLastName()
+        + void setEmployeeNumber()
+        + int getEmployeeNumber()
+        + void setSalary()
+        + int getSalary()
+        + bool isHired()
+    }
+
+    class database {
+        - vector<Employee> employees
+        - int nextEmployeeNumber
+        __ private __
+        + Employee& addEmployee()
+        + Employee& getEmployee()
+        + Employee& getEmployee()
+        + void displayAll()
+        + void displayCurrent()
+        + void displayFormer()
+    }
+}
+@enduml
