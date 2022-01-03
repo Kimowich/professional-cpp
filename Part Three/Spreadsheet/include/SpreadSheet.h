@@ -25,6 +25,7 @@ public:
     ~SpreadSheet();
     void setCellAt(size_t x, size_t y, const SpreadSheetCell& cell);
     SpreadSheetCell& getCellAt(size_t x, size_t y);
+    const SpreadSheetCell& getCellAt(size_t x, size_t y) const;
     void verifyCoordinate(size_t x, size_t y) const;
 
     // This function is not allowed to call exceptions
@@ -130,7 +131,12 @@ void SpreadSheet::setCellAt(size_t x, size_t y, const SpreadSheetCell& cell)
 
 SpreadSheetCell& SpreadSheet::getCellAt(size_t x, size_t y)
 {
-    verifyCoordinate(x,y);
+    return const_cast<SpreadSheetCell&>(std::as_const(*this).getCellAt(x, y));
+}
+
+const SpreadSheetCell& SpreadSheet::getCellAt(size_t x, size_t y) const
+{
+    verifyCoordinate(x, y);
     return cells[x][y];
 }
 
