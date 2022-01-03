@@ -94,6 +94,8 @@ SpreadSheetCell& SpreadSheet::getCellAt(size_t x, size_t y)
     verifyCoordinate(x,y);
     return cells[x][y];
 }
+
+// Exception-safe swap
 void SpreadSheet::swap(SpreadSheet& other) noexcept
 {
     std::swap(width, other.width);    
