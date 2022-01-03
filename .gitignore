@@ -3,9 +3,12 @@ Exercises/*
 */**/build/*
 */**/x64/*
 */**/.vs/*
-*.vcxproj*
+*.vs
 *.sln
 *.exe
 *.json
 *.zip
 
+*.vcxproj
+*.filters
+*.user
