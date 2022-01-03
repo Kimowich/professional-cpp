@@ -147,13 +147,18 @@ void SpreadSheet::cleanup() noexcept
 
 void SpreadSheet::moveFrom(SpreadSheet& src) noexcept
 {
-    // shallow copy
-    this->width = src.width;
-    this->height = src.height;
-    this->cells = src.cells;
+    //// shallow copy
+    //this->width = src.width;
+    //this->height = src.height;
+    //this->cells = src.cells;
 
-    // Reset the object source, because ownership has been moved.
-    src.width = 0;
-    src.height = 0;
-    src.cells = nullptr;
+    //// Reset the object source, because ownership has been moved.
+    //src.width = 0;
+    //src.height = 0;
+    //src.cells = nullptr;
+
+    // using std::exchange instead.
+    this->width = std::exchange(src.width, 0);
+    this->height = std::exchange(src.height, 0);
+    this->cells = std::exchange(src.cells, nullptr);
 }
