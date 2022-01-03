@@ -2,6 +2,6 @@ Code/*
 Exercises/*
 build
 build/*
-vs/*
-vscode/*
+*.json
 *.zip
+/Part Three/Spreadsheet/.vs
