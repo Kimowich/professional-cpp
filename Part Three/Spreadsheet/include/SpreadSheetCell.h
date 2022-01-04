@@ -5,11 +5,13 @@
 
 class SpreadSheetCell
 {
+    enum class Color { Red = 1, Green, Blue, Yellow };
 private:
     /* data */
     double value{0.0};
     std::string doubleToString(double value) const;
     double stringToDouble(std::string_view value) const;
+    Color color{ Color::Red };
 public:
     /* Explicit constructor prevents myCell = "6"sv; */
     SpreadSheetCell()=default;
@@ -21,9 +23,6 @@ public:
     // Assignment operator
     SpreadSheetCell& operator=(const SpreadSheetCell& rhs);
 
-    //TODO - Print operator <<
-
-
     ~SpreadSheetCell();
 
     void set(double value);
@@ -33,7 +32,9 @@ public:
     void set(std::string_view value);
     std::string getString() const;
 
-    // Create a print function by overloading <<
+    void setColor(const Color color);
+    SpreadSheetCell::Color getColor() const;
+
 };
 
 /* can be defaulted in class 
@@ -102,6 +103,16 @@ void SpreadSheetCell::set(std::string_view value)
 std::string SpreadSheetCell::getString() const
 {
     return doubleToString(this->value);
+}
+
+void SpreadSheetCell::setColor(const Color color)
+{
+    this->color = color;
+}
+
+SpreadSheetCell::Color SpreadSheetCell::getColor() const
+{
+    return this->color;
 }
 
 std::string SpreadSheetCell::doubleToString(double value) const
