@@ -15,7 +15,7 @@ private:
 	static inline size_t idCounter{ 0 };
 	// This could be vector instead
 	SpreadSheetCell** cells{ nullptr };
-	void cleanup() noexcept;
+	//void cleanup() noexcept;
 	void moveFrom(SpreadSheet& src) noexcept;
 public:
 	SpreadSheet(size_t width, size_t height);
@@ -29,7 +29,6 @@ public:
 	const SpreadSheetCell& getCellAt(size_t x, size_t y) const;
 	void verifyCoordinate(size_t x, size_t y) const;
 	size_t getId() const;
-	// This function is not allowed to call exceptions
 	void swap(SpreadSheet& other) noexcept;
 
 	static const size_t maxHeight{ 100 };

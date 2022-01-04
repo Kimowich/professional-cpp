@@ -122,16 +122,16 @@ void mySwap(SpreadSheet& first, SpreadSheet& second) noexcept
 	first.swap(second);
 }
 
-void SpreadSheet::cleanup() noexcept
-{
-	for (size_t i{ 0 }; i < width; i++)
-	{
-		delete[] cells[i];
-	}
-	delete[] cells;
-	cells = nullptr;
-	this->width = this->height = 0;
-}
+//void SpreadSheet::cleanup() noexcept
+//{
+//	for (size_t i{ 0 }; i < width; i++)
+//	{
+//		delete[] cells[i];
+//	}
+//	delete[] cells;
+//	cells = nullptr;
+//	this->width = this->height = 0;
+//}
 
 void SpreadSheet::moveFrom(SpreadSheet& src) noexcept
 {
