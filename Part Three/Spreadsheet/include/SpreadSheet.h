@@ -3,8 +3,7 @@
 #include <exception>
 #include <stdexcept>
 #include <utility>
-
-
+#include <algorithm>
 
 class SpreadSheet
 {
@@ -12,6 +11,8 @@ private:
     bool inRange(size_t value, size_t upper) const;
     size_t width{0};
     size_t height{0};
+    const size_t id{ 0 };
+    static inline size_t idCounter{0};
     // This could be vector instead
     SpreadSheetCell** cells{nullptr};
     void cleanup() noexcept;
@@ -27,14 +28,20 @@ public:
     SpreadSheetCell& getCellAt(size_t x, size_t y);
     const SpreadSheetCell& getCellAt(size_t x, size_t y) const;
     void verifyCoordinate(size_t x, size_t y) const;
-
+    size_t getId() const;
     // This function is not allowed to call exceptions
     void swap(SpreadSheet& other) noexcept;
+
+    static const size_t maxHeight{ 100 };
+    static const size_t maxWidth{ 100 };
+
 };
 
 void mySwap(SpreadSheet& first, SpreadSheet& second) noexcept;
 
-SpreadSheet::SpreadSheet(size_t width, size_t height) : width{width},height{height}
+SpreadSheet::SpreadSheet(size_t width, size_t height) :
+    id{idCounter++}, width { std::min(width,maxWidth)}, height{std::min(height,maxHeight)}
+                                                        
 {   
     // raw points for learning purposes
     cells = new SpreadSheetCell*[this->width];
