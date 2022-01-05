@@ -17,24 +17,6 @@ SpreadSheetCell operator+(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs
 	return SpreadSheetCell{ lhs.getValue() + rhs.getValue() };
 }
 
-SpreadSheetCell operator-(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs)
-{
-	return SpreadSheetCell{ lhs.getValue() - rhs.getValue() };
-}
-SpreadSheetCell operator*(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs)
-{
-	return SpreadSheetCell{ lhs.getValue() * rhs.getValue() };
-}
-
-SpreadSheetCell operator/(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs)
-{
-	if (rhs.getValue() == 0)
-	{
-		throw std::invalid_argument{ "Dividing by zero" };
-	}
-		
-	return SpreadSheetCell{ lhs.getValue() / rhs.getValue() };
-}
 SpreadSheetCell::~SpreadSheetCell()
 {
 }
@@ -47,32 +29,6 @@ SpreadSheetCell& SpreadSheetCell::operator=(const SpreadSheetCell& rhs)
 		value = rhs.value;
 		return *this;
 	}
-}
-
-SpreadSheetCell& SpreadSheetCell::operator+=(const SpreadSheetCell& rhs)
-{
-	set(getValue() + rhs.getValue());
-	return *this;
-}
-
-SpreadSheetCell& SpreadSheetCell::operator-=(const SpreadSheetCell& rhs)
-{
-	set(getValue() - rhs.getValue());
-	return *this;
-}
-
-SpreadSheetCell& SpreadSheetCell::operator*=(const SpreadSheetCell& rhs)
-{
-	set(getValue() * rhs.getValue());
-	return *this;
-}
-
-SpreadSheetCell& SpreadSheetCell::operator/=(const SpreadSheetCell& rhs)
-{
-	if (rhs.getValue() == 0)
-		throw std::invalid_argument("Dividing by zero");
-	set(getValue() + rhs.getValue());
-	return *this;
 }
 
 void SpreadSheetCell::set(double value)

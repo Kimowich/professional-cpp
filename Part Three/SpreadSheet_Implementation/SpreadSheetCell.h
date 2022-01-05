@@ -22,14 +22,6 @@ public:
 
 	SpreadSheetCell& operator=(const SpreadSheetCell& rhs);
 	friend SpreadSheetCell operator+(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
-	friend SpreadSheetCell operator-(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
-	friend SpreadSheetCell operator*(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
-	friend SpreadSheetCell operator/(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
-
-	SpreadSheetCell& operator+=(const SpreadSheetCell& rhs);
-	SpreadSheetCell& operator-=(const SpreadSheetCell& rhs);
-	SpreadSheetCell& operator*=(const SpreadSheetCell& rhs);
-	SpreadSheetCell& operator/=(const SpreadSheetCell& rhs);
 
 	void set(double value);
 	void set(int value) = delete;
