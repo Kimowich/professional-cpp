@@ -31,12 +31,15 @@ public:
 	SpreadSheetCell& operator*=(const SpreadSheetCell& rhs);
 	SpreadSheetCell& operator/=(const SpreadSheetCell& rhs);
 
-	friend bool operator==(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
-	friend bool operator<(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
-	friend bool operator>(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
-	friend bool operator!=(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
-	friend bool operator<=(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
-	friend bool operator>=(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
+	//friend bool operator==(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
+	//friend bool operator<(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
+	//friend bool operator<(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
+	//friend bool operator>(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
+	//friend bool operator!=(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
+	//friend bool operator<=(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
+	//friend bool operator>=(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
+
+	[[nodiscard]] auto operator<=>(const SpreadSheetCell& rhs) const = default;
 
 	void set(double value);
 	void set(int value) = delete;
