@@ -31,6 +31,13 @@ public:
 	SpreadSheetCell& operator*=(const SpreadSheetCell& rhs);
 	SpreadSheetCell& operator/=(const SpreadSheetCell& rhs);
 
+	friend bool operator==(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
+	friend bool operator<(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
+	friend bool operator>(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
+	friend bool operator!=(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
+	friend bool operator<=(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
+	friend bool operator>=(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
+
 	void set(double value);
 	void set(int value) = delete;
 	void set(std::string_view value);

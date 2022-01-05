@@ -10,5 +10,10 @@ int main(int, char**) {
     a3 /= 3;
     a3 -= 1;
     a3 *= 2;
+    bool b{ a3 == a1 };
+    b = a1 < a3 ;
+    b = a1 <= a3;
+    b = a1 >= a3;
+    b = a1 != a3;
     return EXIT_SUCCESS;
 }
