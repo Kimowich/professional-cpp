@@ -1,5 +1,6 @@
 #include <iostream>
 #include <format>
+#include <bit>
 #include "Derived.h"
 int main()
 {
@@ -42,5 +43,27 @@ int main()
 
 	X& xr{ x };
 	Y& yr{ reinterpret_cast<Y&>(x) };
+
+	// Bit cast
+	float asFloat{ 1.23f };
+	auto asUint{ std::bit_cast<unsigned int>(asFloat) };
+	if (std::bit_cast<float>(asUint) == asFloat) { std::cout << "Roundtrip success" << std::endl; };
+
+	// dynamic cast correct
+	Base* b2;
+	Derived* d2{ new Derived{} };
+	b2 = d2;
+	d2 = dynamic_cast<Derived*>(b2);
+
+	// dynamic cast wrong cast
+	Base& br2{ base };
+	try
+	{
+		Derived& dr2{ dynamic_cast<Derived&>(br2) };
+	}
+	catch (const std::bad_cast&)
+	{
+		std::cout << "bad cast! " << std::endl;
+	}
 	return 0;
 }
