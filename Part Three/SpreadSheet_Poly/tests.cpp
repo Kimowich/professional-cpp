@@ -22,6 +22,7 @@ int main()
 	SpreadSheet_Cell_Double celldouble;
 	celldouble.set(8.4);
 	SpreadSheet_Cell_String result{ celldouble + celldouble };
+	std::cout << result.getString() << std::endl;
 
 	return 0;
 }
