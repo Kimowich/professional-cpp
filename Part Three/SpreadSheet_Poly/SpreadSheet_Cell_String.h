@@ -13,7 +13,6 @@ public:
     std::string getString() const override;
 
     //friend SpreadSheetCell operator+(const SpreadSheetCell& lhs, const SpreadSheetCell& rhs);
-    friend SpreadSheet_Cell_String operator+(const SpreadSheet_Cell_String& lhs, const SpreadSheet_Cell_String& rhs);
 private:
     std::optional<std::string> m_value;
 };

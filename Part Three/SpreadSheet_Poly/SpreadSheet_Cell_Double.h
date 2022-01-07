@@ -13,6 +13,7 @@ public:
 private:
     static std::string doubleToString(double value);
     static double stringToDouble(std::string_view value);    
+    
     std::optional<double> m_value;
 };
 

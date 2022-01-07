@@ -4,6 +4,7 @@
 #include <memory>
 #include <iostream>
 #include <format>
+SpreadSheet_Cell_String operator+(const SpreadSheet_Cell_String& lhs, const SpreadSheet_Cell_String& rhs);
 
 int main()
 {
@@ -23,6 +24,8 @@ int main()
 	celldouble.set(8.4);
 	SpreadSheet_Cell_String result{ celldouble + celldouble };
 	std::cout << result.getString() << std::endl;
+
+	std::cout << std::string("hi") + std::string(",") << std::endl;
 
 	return 0;
 }
