@@ -2,17 +2,23 @@
 
 void mySwap(SpreadSheet& first, SpreadSheet& second) noexcept;
 
-SpreadSheet::SpreadSheet(size_t width, size_t height) :
-	id{ idCounter++ }, width{ std::min(width,maxWidth) }, height{ std::min(height,maxHeight) }
-
+class SpreadSheet::Implementation
 {
-	// raw points for learning purposes
-	cells = new SpreadSheetCell * [this->width];
-	for (size_t i{ 0 }; i < this->width; i++)
-	{
-		cells[i] = new SpreadSheetCell[height];
-	}
-}
+public: 
+	Implementation(size_t width, size_t height);
+	Implementation(const Implementation& src);
+	Implementation(Implementation&&) noexcept = default;
+	~Implementation();
+	Implementation& operator=(const Implementation& rhs);
+	Implementation& operator=(Implementation &&) noexcept = default;
+	void setCellAt(size_t x, size_t y, const SpreadSheetCell& cell);
+	SpreadSheetCell& getCellAt(size_t x, size_t y);
+	size_t getId() const;
+	void swap(Implementation& other) noexcept;
+private:
+};
+
+SpreadSheet::Implementation::Implementation(const SpreadSh)
 
 /* Deep Copy Constructor */
 /* The initialiser first init. a SpreadSheet with the correct sizes (delagates memory) */
