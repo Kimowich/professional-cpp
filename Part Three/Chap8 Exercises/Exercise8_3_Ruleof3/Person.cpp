@@ -1,5 +1,6 @@
 #include "Person.h"
 #include <iostream>
+#include <format>
 
 Person::Person()
 {
@@ -10,10 +11,23 @@ Person::Person(std::string_view firstName, std::string_view lastName) : m_firstN
 {
 	std::cout << "C-tor initialised" << std::endl;
 }
-
+// Copy constructor
 Person::Person(const Person& src) : m_firstName{ src.m_firstName }, m_lastName{ src.m_lastName }
 {
 	std::cout << "Copy constructor called" << std::endl;
+}
+// Move Constructor, Person&& is a rvalue reference 
+Person::Person(Person&& src) noexcept
+{
+	std::cout << "Move Constructor called" << std::endl;
+	swap(src);
+}
+// Move assignment operator,
+Person& Person::operator=(Person&& rhs) noexcept
+{
+	std::cout << "Move assignment operator called" << std::endl;
+	swap(rhs);
+	return *this;
 }
 
 Person::~Person()
@@ -49,4 +63,16 @@ std::string Person::getFirstName() const
 std::string Person::getLastName() const
 {
 	return m_lastName;
+}
+
+void Person::swap(Person& rhs) noexcept
+{
+	std::swap(m_firstName, rhs.m_firstName);
+	std::swap(m_lastName, rhs.m_lastName);
+}
+
+std::ostream& operator<<(std::ostream& os, const Person& src)
+{
+	os << format("{} {}", src.getFirstName(), src.getLastName());
+	return os;
 }
