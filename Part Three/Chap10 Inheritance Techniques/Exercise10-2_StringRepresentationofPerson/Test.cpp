@@ -4,43 +4,27 @@
 #include "Director.h"
 #include <format>
 #include <iostream>
-#include <vector>
-#include <memory>
-/* Exercise 10-3: 
-Practise polymorphic behavior of the classes in your Person hierarchy from Exercise 10-2. 
-Define a vector to store a mix of employees, managers, and directors, and fill it with some test data. 
-Finally, use a single range-based for loop to call toString() on all of the elements in the vector.
+/* Exercise 10-1: 
+Take the Person class from Exercise 9-2 and add a derived class called Employee. 
+You can omit the overload of operator<=> from Exercise 9-2. 
+The Employee class adds one data member, an employee ID. 
+Provide an appropriate constructor. From Employee, derive two more classes called Manager and Director. 
+Put all your classes, including the Person class, in a namespace called HR. 
+Note that you can export everything in a namespace as follows:  
+	export namespace HR {  }
 
-Gregoire, Marc. Professional C++ (p. 395). Wiley. Kindle Edition.  */
+Gregoire, Marc.Professional C++ (p. 395).Wiley.Kindle Edition. */
 
 
 int main()
 {
-	std::vector<std::unique_ptr<HR::Person>> company;
-
-	company.push_back(std::make_unique<HR::Director>("Eugene","Krabs",1));
-	company.push_back(std::make_unique<HR::Manager>("Squidward", "Tentacles", 10));
-	company.push_back(std::make_unique<HR::Employee>("SpongeBob", "Squarepants", 100));
-	company.push_back(std::make_unique<HR::Employee>("Patric", "Starfish", 101));
-	company.push_back(std::make_unique<HR::Employee>("Sandy", "Cheeks", 102));
-
-	for (auto& employee : company)
-	{
-		std::cout << *employee << std::endl;
-	}
-
-	std::vector<HR::Person> otherCompany;
-
-	otherCompany.push_back(HR::Director("Eugene", "Krabs", 1));
-	otherCompany.push_back(HR::Manager("Squidward", "Tentacles", 10));
-	otherCompany.push_back(HR::Employee("SpongeBob", "Squarepants", 100));
-	otherCompany.push_back(HR::Employee("Patric", "Starfish", 101));
-	otherCompany.push_back(HR::Employee("Sandy", "Cheeks", 102));
-
-	for (auto& employee : otherCompany)
-	{
-		std::cout << employee << std::endl;
-	}
-
+	HR::Person person{ "Spongebob","Squarepants" };
+	HR::Employee employedPerson{ "Bob","Builder",1 };
+	HR::Manager managerEmployee{ "Squidward", "Tentacles",2 };
+	HR::Director directorEmployee{ "Eugene ", "Krabs", 3 };
+	std::cout << person << std::endl;
+	std::cout << employedPerson << std::endl;
+	std::cout << managerEmployee << std::endl;
+	std::cout << directorEmployee << std::endl;
 	return 0;
 }

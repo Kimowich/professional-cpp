@@ -6,12 +6,12 @@ namespace HR
 {
 	Person::Person()
 	{
-		//std::cout << "Default Constructor called" << std::endl;
+		std::cout << "Default Constructor called" << std::endl;
 	}
 
 	Person::Person(std::string_view firstName, std::string_view lastName) : m_firstName{ firstName }, m_lastName{ lastName }
 	{
-		//std::cout << "C-tor initialised" << std::endl;
+		std::cout << "C-tor initialised" << std::endl;
 		m_initials += firstName.at(0);
 		m_initials += lastName.at(0);
 	}
