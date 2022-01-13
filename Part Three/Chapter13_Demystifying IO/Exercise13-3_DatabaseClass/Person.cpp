@@ -2,10 +2,6 @@
 #include <iostream>
 #include <format>
 
-Person::Person()
-{
-}
-
 Person::Person(std::string_view firstName, std::string_view lastName) : m_firstName{ firstName }, m_lastName{ lastName }
 {
 	m_initials += firstName.at(0);

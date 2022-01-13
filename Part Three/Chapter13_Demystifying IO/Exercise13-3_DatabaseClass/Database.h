@@ -9,12 +9,12 @@ public:
 	~Database() = default;
 
 	void add(const Person& person);
-	void save(const std::string_view fileName);
+	void save(const std::string_view fileName) const;
 	void load(const std::string_view fileName);
 	void clear();
 	void outputAll();
 
 private:
-	std::vector<Person> listofPeople;
+	std::vector<Person> m_listOfPeople;
 };
 

@@ -35,12 +35,17 @@ int main()
 	// add more people
 	registry.add(Person{ "Patrick", "Starfish" });
 	registry.add(Person{ "Sandy", "Cheeks" });
+	registry.add(Person{ "Eugene", "Kraps" });
+
 	registry.outputAll();
-	// test output function
+	// Test save function
+	registry.save("personDatabase.db");
 
-	// clear the database
+	registry.clear();
 
-	// Test output function
+	registry.load("personDatabase.db");
+
+	registry.outputAll();
 
 	return 0;
 }

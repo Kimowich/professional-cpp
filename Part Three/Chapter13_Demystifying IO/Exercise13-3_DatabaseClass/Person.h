@@ -5,7 +5,7 @@
 class Person
 {
 public:
-	Person();
+	Person() = default;
 	Person(std::string_view firstName, std::string_view lastName);
 	Person(std::string_view firstName, std::string_view lastName, std::string_view initials);
 
